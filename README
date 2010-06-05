@@ -1,0 +1,47 @@
+kill.c -- terminate a process
+ 
+There should be a command that does kill and works its way up to -9.
+ http://news.ycombinator.com/item?id=1395876
+ 
+Mark Stock
+ http://hoop-la.ca/software/contact.html
+ 
+Compile with: make kill
+ 
+Example session:
+ 
+ faster:pussycat kill$ ps
+ PID TTY           TIME CMD
+ 666 ttys000    0:00.38 -bash
+ 
+ * open a new terminal/shell window
+ 
+ faster:pussycat kill$ ps
+ PID TTY           TIME CMD
+ 666 ttys000    0:00.39 -bash
+ 1965 ttys001    0:00.01 -bash
+ 
+ faster:pussycat kill$ ./kill -v 1965
+ Sending a "terminate" signal 15 to process id 1965 ...
+ Sending a "hang up" signal 1 to process id 1965 ...
+	Terminated process id 1965.
+ 
+ faster:pussycat kill$ ps
+ PID TTY           TIME CMD
+ 666 ttys000    0:00.39 -bash
+ 
+Description:
+ 
+ This kill utility initially sends a TERM signal to the processes specified by the pid.
+ It then waits a second to allow the process to terminate, and then resends the signal
+ to check if the process terminated.  If the process didn't terminate the signal is
+ escalated to a higher level of termination as follows:
+	15      TERM (software termination signal)
+	1       HUP (hang up)
+	2       INT (interrupt)
+	3       QUIT (quit)
+	6       ABRT (abort)
+	9       KILL (non-catchable, non-ignorable kill)
+
+ See also: kill(2)
+
