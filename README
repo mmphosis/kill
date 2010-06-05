@@ -32,7 +32,7 @@ Example session:
  
 Description:
  
- This kill utility initially sends a TERM signal to the processes specified by the pid.
+ This kill utility initially sends a TERM signal to the process specified by the pid.
  It then waits a second to allow the process to terminate, and then resends the signal
  to check if the process terminated.  If the process didn't terminate the signal is
  escalated to a higher level of termination as follows:
