@@ -32,10 +32,10 @@ Example session:
  
 Description:
  
- This kill utility initially sends a TERM signal to the process specified by the pid.
- It then waits a second to allow the process to terminate, and then resends the signal
- to check if the process terminated.  If the process didn't terminate the signal is
- escalated to a higher level of termination as follows:
+ This kill utility initially sends a TERM signal to the processes specified by the pid
+ operand(s).  It then waits a second to allow the process to terminate, and then resends
+ the signal to check if the process terminated.  If the process didn't terminate the
+ signal is escalated to a higher level of termination as follows:
 	15      TERM (software termination signal)
 	1       HUP (hang up)
 	2       INT (interrupt)
@@ -44,4 +44,3 @@ Description:
 	9       KILL (non-catchable, non-ignorable kill)
 
  See also: kill(2)
-
